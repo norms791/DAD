@@ -1,0 +1,1 @@
+Aqui se encuentran todos los archivos Ajax que se incluyen en cualquier parte del proyecto.

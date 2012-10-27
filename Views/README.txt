@@ -1,0 +1,1 @@
+Aqui se encuentran todas las vistas que se incluyen en cualquier parte del proyecto.

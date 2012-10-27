@@ -1,0 +1,1 @@
+Aqui se encuentran todas las imagenes que se incluyen en cualquier parte del proyecto.
