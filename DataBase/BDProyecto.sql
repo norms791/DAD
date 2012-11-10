@@ -1,12 +1,11 @@
--- phpMyAdmin SQL Dump
+--- phpMyAdmin SQL Dump
 -- version 3.5.2.2
 -- http://www.phpmyadmin.net
 --
-
--- Host: 127.0.0.1
--- Generation Time: Nov 05, 2012 at 06:30 AM
--- Server version: 5.5.27
--- PHP Version: 5.4.7
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 10-11-2012 a las 22:57:48
+-- Versión del servidor: 5.5.27
+-- Versión de PHP: 5.4.7
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,81 +16,100 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
--- Database: `bdproyecto`
-
+--
+-- Base de datos: `dad`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `muebles`
+-- Estructura de tabla para la tabla `muebles`
 --
 
 CREATE TABLE IF NOT EXISTS `muebles` (
-  `idMueble` int(5) NOT NULL,
-  `idUsuario` int(11) NOT NULL,
-  `desBreve` text NOT NULL,
-  `desCompleta` text NOT NULL,
-  `ubicacion` text NOT NULL,
-  `foto` text NOT NULL,
-  `reservado` tinyint(1) NOT NULL,
+  `idMueble` int(5) NOT NULL AUTO_INCREMENT,
+  `desAbreviada` varchar(60) NOT NULL,
+  `desDetallada` varchar(255) NOT NULL,
+  `ubicacion` varchar(70) NOT NULL,
+  `foto` varchar(100) NOT NULL,
+  `reservado` int(1) NOT NULL,
+  `usuario` varchar(50) NOT NULL,
   PRIMARY KEY (`idMueble`),
-  KEY `idUsuario` (`idUsuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `usuario` (`usuario`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `muebles`
+-- Volcado de datos para la tabla `muebles`
 --
 
-INSERT INTO `muebles` (`idMueble`, `desAbreviada`, `desDetallada`, `ubicacion`, `foto`, `reservado`) VALUES
-(0, 'Sin Informacion', 'Sin Informacion', 'Sin Informacion', 'img_noDisponible.jpg', 0),
-(1, 'Mueble - Repisa de Caoba', 'Mueble - Repisa de Caoba, tallado y fileteado a mano', 'Calle Imaginario, Col. Sueños, Monterrey, N.L., C.P. 64000', 'mueble_de_caoba.jpg', 0),
-(2, 'Mueble - Mesa de Ebano', 'Mueble - Mesa de Ebano fabricado en Muebles Troncoso', 'Calle Solovino, Col. Desamparado, Monterrey, N.L., C.P. 64000', 'mesa_de_ebano.jpg', 0),
-(3, 'Mueble - Silla de Ebano', 'Mueble - Silla de Ebano tallado a mano en Senegal, Africa', 'Calle Telacreiste, Col. Ahiteves, Monterrey, N.L., C.P. 64000', 'silla_de_ebano.jpg', 0);
+INSERT INTO `muebles` (`idMueble`, `desAbreviada`, `desDetallada`, `ubicacion`, `foto`, `reservado`, `usuario`) VALUES
+(1, 'Sin Informacion', 'Sin Informacion', 'Sin Informacion', 'img_noDisponible.jpg', 0, 'norma791@hotmail.com'),
+(2, 'mesa', 'mesa madera', 'sin informacion', 'img_noDisponible.jpg', 0, 'gaby_roes@hotmail.com');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reservacion`
+-- Estructura de tabla para la tabla `reservacion`
 --
 
 CREATE TABLE IF NOT EXISTS `reservacion` (
-  `idReservacion` int(5) NOT NULL,
-  `IdMueble` int(5) NOT NULL,
-  `idUsuario` int(5) NOT NULL,
-  PRIMARY KEY (`idReservacion`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `idReservacion` int(11) NOT NULL AUTO_INCREMENT,
+  `idMueble` int(5) NOT NULL,
+  `idUsuario` varchar(50) NOT NULL,
+  PRIMARY KEY (`idReservacion`),
+  KEY `idMueble` (`idMueble`),
+  KEY `idUsuario` (`idUsuario`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Volcado de datos para la tabla `reservacion`
+--
+
+INSERT INTO `reservacion` (`idReservacion`, `idMueble`, `idUsuario`) VALUES
+(1, 1, 'gaby_roes@hotmail.com'),
+(2, 2, 'norma791@hotmail.com');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuario`
+-- Estructura de tabla para la tabla `usuario`
 --
 
 CREATE TABLE IF NOT EXISTS `usuario` (
-  `idUsuario` int(5) NOT NULL,
+  `Email` varchar(50) NOT NULL,
   `Nombre` varchar(50) NOT NULL,
   `Apellido` varchar(50) NOT NULL,
-  `Email` varchar(50) NOT NULL,
-  PRIMARY KEY (`idUsuario`)
+  PRIMARY KEY (`Email`),
+  UNIQUE KEY `Email` (`Email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `usuario`
+-- Volcado de datos para la tabla `usuario`
 --
 
-
+INSERT INTO `usuario` (`Email`, `Nombre`, `Apellido`) VALUES
+('gaby_roes@hotmail.com', 'Gabriela', 'Rodriguez'),
+('mary@florreo.mx', 'Rosario', 'Robles'),
+('norma791@hotmail.com', 'Norma', 'Escobedo'),
+('rosa.roble@florreo.mx', 'Rosario', 'Robles');
 
 --
--- Filtros para las tablas descargadas (dump)
+-- Restricciones para tablas volcadas
 --
 
 --
 -- Filtros para la tabla `muebles`
 --
 ALTER TABLE `muebles`
-  ADD CONSTRAINT `muebles_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idUsuario`);
-=======
-INSERT INTO `usuario` (`idUsuario`, `Nombre`, `Apellido`, `Email`) VALUES
-(12358, 'Rosario', 'Robles', 'rosa.roble@florreo.mx');
+  ADD CONSTRAINT `muebles_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `usuario` (`Email`);
 
+--
+-- Filtros para la tabla `reservacion`
+--
+ALTER TABLE `reservacion`
+  ADD CONSTRAINT `reservacion_ibfk_2` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`Email`),
+  ADD CONSTRAINT `reservacion_ibfk_1` FOREIGN KEY (`idMueble`) REFERENCES `muebles` (`idMueble`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
