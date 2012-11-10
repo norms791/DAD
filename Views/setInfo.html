@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+	<head>
+		<title>Reciclado Muebles</title>
+		<link rel="stylesheet" href="../CSS/style.css" type="text/css" media="screen" />	
+		<style>
+			#head{
+				background: url(../Pictures/b.jpg);
+			}
+		</style>
+	</head>
+<script
+src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
+</script>
+
+<script>
+var myCenter=new google.maps.LatLng(25.649573,-100.291125);
+
+function initialize()
+{
+var mapProp = {
+  center:myCenter,
+  zoom:12,
+  mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+
+var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+ google.maps.event.addListener(map, 'click', function(event) {
+    placeMarker(event.latLng);
+  });
+
+
+function placeMarker(location) {
+  var marker = new google.maps.Marker({
+    position: location,
+    map: map,
+  });
+  document.getElementsByName('latlong')[0].value = location;
+  }
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+</head>
+
+<body>
+<form id="guardaLugar" method="get" action="map-simple.htm">
+<h1>guardainfo</h1>
+Latitud, Longitud <input type="text" name="latlong" /><br />
+<input type="submit" value="Enviar"/>
+</form>
+<div id="googleMap" style="width:700px;height:580px;"></div>
+</body>
+</html>
