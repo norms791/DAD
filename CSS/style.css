@@ -2,6 +2,7 @@ body{
     background-image: url(../Pictures/wp2.png);
 	color: #2B0A04;
 	background-repeat: repeat-x repeat-y;
+	font-family: tahoma;
 }
 
 #head{
@@ -24,18 +25,19 @@ padding-top: 20px;
 }
 
 #contenido{
-	width: 1105px;
-	height: 243px;
+	width: 1105px;	
 	margin-left: auto;
 	margin-right: auto;
 	background-color: #FDF6E3;
 	border-radius: 20px;
 	margin-top: 24px;
+	padding-top: 1px;
+	padding-bottom: 8px;
 }
 #datosSesion{
-position: absolute;
-top: 67px;
-right: 177px;
+	position: absolute;
+	top: 67px;
+	right: 177px;
 }
 
 table{
@@ -49,3 +51,22 @@ table{
 	font-family: tahoma;
 }
 
+.boton{
+	border-radius: 7px;
+	height: 30px;
+	width: 85px;
+	font-size: 17px;
+	background-color: #3C2E03;
+	font-weight: bold;
+	color: #FF7A00;
+	margin-top: 19px;
+	margin-bottom: 2px;
+}
+
+h1{
+	color: #944C09;
+}
+
+form{
+	margin-left: 40px;
+}
