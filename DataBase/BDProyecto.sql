@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 3.3.9
+-- version 3.5.2.2
 -- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tiempo de generación: 02-11-2012 a las 01:10:59
--- Versión del servidor: 5.5.8
--- Versión de PHP: 5.3.5
+
+-- Host: 127.0.0.1
+-- Generation Time: Nov 05, 2012 at 06:30 AM
+-- Server version: 5.5.27
+-- PHP Version: 5.4.7
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -15,14 +17,14 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
---
--- Base de datos: `bdproyecto`
+-- Database: `bdproyecto`
+
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `muebles`
+-- Table structure for table `muebles`
 --
 
 CREATE TABLE IF NOT EXISTS `muebles` (
@@ -38,14 +40,19 @@ CREATE TABLE IF NOT EXISTS `muebles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcar la base de datos para la tabla `muebles`
+-- Dumping data for table `muebles`
 --
 
+INSERT INTO `muebles` (`idMueble`, `desAbreviada`, `desDetallada`, `ubicacion`, `foto`, `reservado`) VALUES
+(0, 'Sin Informacion', 'Sin Informacion', 'Sin Informacion', 'img_noDisponible.jpg', 0),
+(1, 'Mueble - Repisa de Caoba', 'Mueble - Repisa de Caoba, tallado y fileteado a mano', 'Calle Imaginario, Col. Sueños, Monterrey, N.L., C.P. 64000', 'mueble_de_caoba.jpg', 0),
+(2, 'Mueble - Mesa de Ebano', 'Mueble - Mesa de Ebano fabricado en Muebles Troncoso', 'Calle Solovino, Col. Desamparado, Monterrey, N.L., C.P. 64000', 'mesa_de_ebano.jpg', 0),
+(3, 'Mueble - Silla de Ebano', 'Mueble - Silla de Ebano tallado a mano en Senegal, Africa', 'Calle Telacreiste, Col. Ahiteves, Monterrey, N.L., C.P. 64000', 'silla_de_ebano.jpg', 0);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `reservacion`
+-- Table structure for table `reservacion`
 --
 
 CREATE TABLE IF NOT EXISTS `reservacion` (
@@ -55,15 +62,10 @@ CREATE TABLE IF NOT EXISTS `reservacion` (
   PRIMARY KEY (`idReservacion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcar la base de datos para la tabla `reservacion`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuario`
+-- Table structure for table `usuario`
 --
 
 CREATE TABLE IF NOT EXISTS `usuario` (
@@ -75,8 +77,9 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcar la base de datos para la tabla `usuario`
+-- Dumping data for table `usuario`
 --
+
 
 
 --
@@ -88,3 +91,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 --
 ALTER TABLE `muebles`
   ADD CONSTRAINT `muebles_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idUsuario`);
+=======
+INSERT INTO `usuario` (`idUsuario`, `Nombre`, `Apellido`, `Email`) VALUES
+(12358, 'Rosario', 'Robles', 'rosa.roble@florreo.mx');
+
