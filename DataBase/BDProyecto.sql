@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 31-10-2012 a las 01:18:31
+-- Tiempo de generación: 02-11-2012 a las 01:10:59
 -- Versión del servidor: 5.5.8
 -- Versión de PHP: 5.3.5
 
@@ -16,7 +16,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de datos: `BDProyecto`
+-- Base de datos: `bdproyecto`
 --
 
 -- --------------------------------------------------------
@@ -27,12 +27,14 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 CREATE TABLE IF NOT EXISTS `muebles` (
   `idMueble` int(5) NOT NULL,
-  `desAbreviada` text NOT NULL,
-  `desDetallada` text NOT NULL,
+  `idUsuario` int(11) NOT NULL,
+  `desBreve` text NOT NULL,
+  `desCompleta` text NOT NULL,
   `ubicacion` text NOT NULL,
   `foto` text NOT NULL,
   `reservado` tinyint(1) NOT NULL,
-  PRIMARY KEY (`idMueble`)
+  PRIMARY KEY (`idMueble`),
+  KEY `idUsuario` (`idUsuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -76,3 +78,13 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 -- Volcar la base de datos para la tabla `usuario`
 --
 
+
+--
+-- Filtros para las tablas descargadas (dump)
+--
+
+--
+-- Filtros para la tabla `muebles`
+--
+ALTER TABLE `muebles`
+  ADD CONSTRAINT `muebles_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idUsuario`);
