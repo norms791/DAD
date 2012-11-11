@@ -5,7 +5,7 @@
 		<link rel="stylesheet" href="../CSS/style.css" type="text/css" media="screen" />		
 	</head>
 	<body>
-		<?php include_once("../views/header.html");?>
+		<?php include_once("../views/header.php");?>
 		<div id="contenido">
 		   <form action="../Controllers/confirmarReservacion.php" method="get">
 			<input type="hidden" name='mueble' value='<?=$mueble->getIdMueble()?>'/>

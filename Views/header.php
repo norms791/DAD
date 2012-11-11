@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 	<head>
 		<title>Reciclando muebles</title>
-		<link rel="stylesheet" href="../CSS/style.css" type="text/css" media="screen" />		
+		<link rel="stylesheet" href="../CSS/style.css" type="text/css" media="screen" />	
+		<script type="text/javascript" src="../JavaScripts/menu.js"></script>
 	</head>
 	<body>
 	<img id="logo" src="../Pictures/logo.png" alt="Reciclando Muebles A.C."/>
@@ -11,12 +12,10 @@
 	Contraseña: <input type="password" name="contra"/>
 	</div>
 	<div id="head">
-	<table>
-	<tr>
-	<td>Anunciar Artículo</td>
-	<td>Ver Artículos</td>
-	</tr>
-	</table>
+	<ul class="navBar">
+	<li id="link1" class="nBelement"><a href="../Controllers/anunciar.php" class="nbLink" onMouseOver="arriba(this)" onMouseOut="normal(this)">Anunciar artículo</a></li>
+	<li id="link2" class="nBelement"><a href="../Controllers/verArticulos.php" class="nbLink" onMouseOver="arriba(this)" onMouseOut="normal(this)">Ver artículos</a></li>
+	</ul>
 	</div>
 	<div id="contenido">
 	

@@ -70,3 +70,47 @@ h1{
 form{
 	margin-left: 40px;
 }
+
+/* CSS del NAV BAR */
+.navBar{
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	overflow:hidden;
+	margin-left: 39px;
+	padding-top: 3.5px;
+}
+.nBelement{
+	float:left;
+}
+
+.nbLink{
+	color: #FF7A00;
+	text-decoration: none;
+	display:block;	
+	font-family: tahoma;
+	border-top-width: 10px;
+	margin-top: 12px;
+	margin-right: 12px;
+	font-weight: bold;
+	font-size: 15pt;
+	text-align: center;
+	border-radius: 9px;
+	width: 200px;
+}
+
+.mouse{	
+	color: #3C2E03;
+	background-color: #FF7A00;
+	text-decoration: none;
+	display:block;
+	font-family: tahoma;
+	border-top-width: 10px;
+	margin-top: 12px;
+	margin-right: 12px;
+	font-weight: bold;
+	font-size: 15pt;
+	text-align: center;
+	border-radius: 9px;
+	width: 200px;
+}
