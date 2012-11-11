@@ -6,7 +6,8 @@ class Muebles{
 	private $desAbreviada;
 	private $desDetallada;
 	private $ubicacion;
-	private $foto;
+	private $latitud;
+	private $longitud;
 	private $reservado;
 	private $usuario;
 	
@@ -16,11 +17,23 @@ class Muebles{
 	}
 		
 	// Constructor lleno
-	public function llenaDatos($desAbreviada, $desDetallada, $ubicacion, $foto, $reservado, $usuario){
+	public function llenaDatos($desAbreviada, $desDetallada, $ubicacion, $latitud, $longitud, $reservado, $usuario){
 		$this->desAbreviada = $desAbreviada;
 		$this->desDetallada = $desDetallada;
 		$this->ubicacion = $ubicacion;
-		$this->foto = $foto;
+		$this->latitud = $latitud;
+		$this->longitud = $longitud;
+		$this->reservado = $reservado;
+		$this->usuario=$usuario;
+	}
+	
+	public function llenaDatos($idMueble, $desAbreviada, $desDetallada, $ubicacion,$latitud, $longitud, $reservado, $usuario){
+		$this->idMueble = $idMueble;
+		$this->desAbreviada = $desAbreviada;
+		$this->desDetallada = $desDetallada;
+		$this->ubicacion = $ubicacion;
+		$this->latitud = $latitud;
+		$this->longitud = $longitud;
 		$this->reservado = $reservado;
 		$this->usuario=$usuario;
 		echo ("se lleno obj ");
@@ -53,12 +66,20 @@ class Muebles{
 		$this->ubicacion = $ubicacion;
 	}
 	
-	public function getFoto(){
-		return $this->foto;
+	public function getLatitud(){
+		return $this->latitud;
 	}
 	
-	public function setFoto($foto){
-		$this->foto = $foto;
+	public function setLatitud($latitud){
+		$this->latitud = $latitud;
+	}
+	
+	public function getLongitud(){
+		return $this->longitud;
+	}
+	
+	public function setLongitud($longitud){
+		$this->longitud = $longitud;
 	}
 	
 	public function getReservado(){
@@ -71,8 +92,8 @@ class Muebles{
 	
 	public function insertarMueble(){
 		global $conexion;
-		$query = "insert into muebles (desAbreviada, desDetallada, ubicacion, foto, reservado, usuario) values ('".$this->desAbreviada."', '".$this->desDetallada.
-						"', '".$this->ubicacion."', '".$this->foto."', ".$this->reservado.", '".$this->usuario."')";
+		$query = "insert into muebles (desAbreviada, desDetallada, ubicacion, latitud, longitud, reservado, usuario) values ('".$this->desAbreviada."', '".$this->desDetallada.
+						"', '".$this->ubicacion."', ".$this->$latitud.",".$this->longitud."', '".$this->reservado.", '".$this->usuario."')";
 						echo $query;
 		mysql_query($query ,$conexion);
 		$this->idMueble= mysql_insert_id();
@@ -82,20 +103,31 @@ class Muebles{
 		global $conexion;
 		$query = "select * from muebles where idMueble=".$id;
 		$result = mysql_query($query, $conexion);
-		$row = mysql_fetch_array($result);
-		$this ->idMueble = $id;
-		$this ->desAbreviada = $row['desAbreviada'];
-		$this ->desDetallada = $row['desDetallada'];
-		$this ->ubicacion = $row['ubicacion'];
-		$this ->foto = $row['foto'];
-		$this ->reservado= $row['reservado'];
-		$this ->usuario = $row['usuario'];		
+		if($row = mysql_fetch_array($result)){
+			$this ->idMueble = $id;
+			$this ->desAbreviada = $row['desAbreviada'];
+			$this ->desDetallada = $row['desDetallada'];
+			$this ->ubicacion = $row['ubicacion'];
+			$this ->latitud = $row['latitud'];
+			$this ->longitud= $row['longitud'];
+			$this ->reservado= $row['reservado'];
+			$this ->usuario = $row['usuario'];
+		}
+		else{
+			die ("No existe el mueble que buscas en la base de datos");
+		}
 	}
-	/*
-	public static function getInfoMueble($id){
+	
+	public static function obtenerListaMuebles(){
 		global $conexion;
-		$result = sqlsrv_query($conexion,"SELECT * FROM muebles WHERE idMueble=$id");
-		mysql_fetch_array($result);
+		$result = sqlsrv_query($conexion,"SELECT * FROM muebles");
+		$muebles= array();
+		while($row= mysql_fetch_array($result)){
+			$mueble = new Muebles();
+			$mueble->llenaDatosCompletos($row['idMueble'], $row['desAbreviada'], $row['desDetallada'] ,  $row['ubicacion'], $row['latitud'], $row['longitud'], $row['reservado'], $row['usuario']);
+			$muebles[] = $mueble;
+		}
+		return $muebles;
 	}
 	
 	public static function reservarMueble($id){
