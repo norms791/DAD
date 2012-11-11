@@ -7,13 +7,18 @@
 	<body>
 		<?php include_once("../views/header.html");?>
 		<div id="contenido">
-		   <form action="../Controllers/reservar.php" method="post">
+		   <form action="../Controllers/confirmarReservacion.php" method="get">
+			<input type="hidden" name='mueble' value='<?=$mueble->getIdMueble()?>'/>
+			<input type="hidden" name='usuario' value='<?=$usuario->getEmail()?>'/>
 		    <h1>Reservación</h1>
 			<h3>Información de la reservación</h3>
-			<p>Nombre:</p>
-			<p>E-mail:</p>
-			<p>Teléfono:</p>
+			<p>Nombre:<?=$usuario->getNombre()?></p>
+			<p>E-mail:<?=$usuario->getEmail()?></p>
 			<p>Artículo reservado:</p>
+			<?=$mueble->getDesAbreviada()?><br/>
+			<?=$mueble->getDesDetallada()?><br/>
+			<?=$mueble->getUbicacion()?><br/>
+			<img src='<?=$foto?>' />
 			<center>
 				<input type="submit" value="Reservar" class="boton"/>
 			</center>
