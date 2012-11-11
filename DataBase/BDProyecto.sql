@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-11-2012 a las 01:24:43
+-- Tiempo de generación: 11-11-2012 a las 02:19:40
 -- Versión del servidor: 5.5.27
 -- Versión de PHP: 5.4.7
 
@@ -31,6 +31,8 @@ CREATE TABLE IF NOT EXISTS `muebles` (
   `desAbreviada` varchar(60) NOT NULL,
   `desDetallada` varchar(255) NOT NULL,
   `ubicacion` varchar(70) NOT NULL,
+  `latitud` double NOT NULL,
+  `longitud` double NOT NULL,
   `reservado` int(1) NOT NULL,
   `usuario` varchar(50) NOT NULL,
   PRIMARY KEY (`idMueble`),
@@ -41,13 +43,13 @@ CREATE TABLE IF NOT EXISTS `muebles` (
 -- Volcado de datos para la tabla `muebles`
 --
 
-INSERT INTO `muebles` (`idMueble`, `desAbreviada`, `desDetallada`, `ubicacion`, `reservado`, `usuario`) VALUES
-(1, 'Sin Informacion', 'Sin Informacion', 'Sin Informacion', 0, 'norma791@hotmail.com'),
-(2, 'mesa', 'mesa madera', 'sin informacion', 0, 'gaby_roes@hotmail.com'),
-(5, 'nuevo Mueble', 'mueble nuevo de prueba', 'mi casa', 0, 'norma791@hotmail.com'),
-(6, 'nuevo Mueble', 'mueble nuevo de prueba', 'mi casa', 0, 'norma791@hotmail.com'),
-(7, 'nuevo Mueble', 'mueble nuevo de prueba', 'mi casa', 0, 'norma791@hotmail.com'),
-(8, 'nuevo Mueble', 'mueble nuevo de prueba', 'mi casa', 0, 'norma791@hotmail.com');
+INSERT INTO `muebles` (`idMueble`, `desAbreviada`, `desDetallada`, `ubicacion`, `latitud`, `longitud`, `reservado`, `usuario`) VALUES
+(1, 'Sin Informacion', 'Sin Informacion', 'Sin Informacion', 0, 0, 0, 'norma791@hotmail.com'),
+(2, 'mesa', 'mesa madera', 'sin informacion', 0, 0, 0, 'gaby_roes@hotmail.com'),
+(5, 'nuevo Mueble', 'mueble nuevo de prueba', 'mi casa', 0, 0, 0, 'norma791@hotmail.com'),
+(6, 'nuevo Mueble', 'mueble nuevo de prueba', 'mi casa', 0, 0, 0, 'norma791@hotmail.com'),
+(7, 'nuevo Mueble', 'mueble nuevo de prueba', 'mi casa', 0, 0, 0, 'norma791@hotmail.com'),
+(8, 'nuevo Mueble', 'mueble nuevo de prueba', 'mi casa', 0, 0, 0, 'norma791@hotmail.com');
 
 -- --------------------------------------------------------
 
