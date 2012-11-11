@@ -57,7 +57,9 @@
 					return false;					
 			}
 		
-		//Métodos que se pueden acceder fuera de la clase 
+		//Métodos que se pueden acceder fuera de la clase  sin necesidad de crear una instancia de tipo Usuario
+		/* En el controlador se acceden de la siguiente manera:
+			1.se escribe el nombre de la clase seguido de :: y el método  por ejemplo Usuario::obtenerUsuario('correo@correo.com');  */
 		
 			//Método que nos regresa un objeto usuario dada un correo electrónico
 			public static function obtenerUsuario($email){
