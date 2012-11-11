@@ -12,3 +12,5 @@ class Usuario{
 		this->$Apellido = $Apellido;
 	}
 	
+	}
+?>
