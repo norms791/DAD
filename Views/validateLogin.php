@@ -3,7 +3,7 @@ $connection = mysql_connect("localhost","root","");
 if (!$connection){
 	die('Could not connect: ' . mysql_error());
 }
-$link = mysql_select_db("bdproyecto", $connection);
+$link = mysql_select_db("dad", $connection);
 if (!$link){
 	die('Could not connect to database: ' . mysql_error());
 }

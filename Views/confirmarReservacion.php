@@ -5,7 +5,7 @@
 		<link rel="stylesheet" href="../CSS/style.css" type="text/css" media="screen" />		
 	</head>
 	<body>
-		<?php include_once("../views/header.html");?>
+		<?php include_once("../views/header.php");?>
 		<div id="contenido">
 		   <form action="../Controllers/index.php" method="get">
 		   <h1>Se ha realizado la reservacion</h1>

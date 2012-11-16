@@ -6,10 +6,13 @@
 		<script type="text/javascript" src="../JavaScripts/menu.js"></script>
 	</head>
 	<body>
-	<img id="logo" src="../Pictures/logo.png" alt="Reciclando Muebles A.C."/>
+	<a href="../Controllers/index.php"><img id="logo" src="../Pictures/logo.png" alt="Reciclando Muebles A.C."/></a>
 	<div id="datosSesion">
-	Usuario: &nbsp; &nbsp;&nbsp;  <input type="text" name="usuario"/><br/>
-	Contraseña: <input type="password" name="contra"/>
+		<p><?php
+			$dato= $usuario->getNombre();
+			
+			echo $dato;
+		?></p>
 	</div>
 	<div id="head">
 	<ul class="navBar">

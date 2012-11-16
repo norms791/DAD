@@ -85,6 +85,10 @@
 					public function setReservado($reservado){
 						$this->reservado = $reservado;
 					}
+					
+					public function getIdUsuario(){
+						return $this->usuario;
+					}
 				
 				/* Método que inserta un objeto mueble en la base de datos, una vez que se inserta se le agrega el Id al objeto.
 				 el id se obtiene con la funcion mysql_insert_id() que obtiene el id del último insert que se hizo en la base de datos. */

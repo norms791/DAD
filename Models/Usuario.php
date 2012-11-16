@@ -7,13 +7,17 @@
 		private $contrasena;
 		private $nombre;
 		private $apellido;
+		private $telefono;
+		private $valida;
 		
 		//Método Constructor
-		function __construct($Email, $contrasena, $Nombre, $Apellido){
+		function __construct($Email, $contrasena, $Nombre, $Apellido, $telefono, $valida){
 			$this->Email = $Email;
 			$this->contrasena= $contrasena;
 			$this->nombre = $Nombre;
 			$this->apellido = $Apellido;
+			$this->telefono = $telefono;
+			$this->valida = $valida;
 		}
 		
 		//Métodos que puede accesar un objeto de la clase Usuario, nos dejan hacer operaciones sobre él
@@ -30,13 +34,13 @@
 			}
 			public function getApellido(){
 				return $this->apellido;
-			}			
+			}	
+			public function getTelefono(){
+				return $this->telefono;
+			}				
 			public function getContrasena(){
 				return $this->contrasena;
-			}			
-			public function setContrasena($Contrasena){
-				 $this->contrasena= $Contrasena;
-			}
+			}						
 			public function setEmail($Email){
 				 $this->Email= $Email;
 			}
@@ -46,15 +50,26 @@
 			public function setApellido($Apellido){
 				 $this->apellido= $Apellido;
 			}
-			
+			public function setTelefono($telefono){
+				 $this->telefono= $telefono;
+			}
+			public function setContrasena($Contrasena){
+				 $this->contrasena= $Contrasena;
+			}
 			//Método que permite insertar un usuario en la base de datos
 			public function insertarUsuario(){
 				global $conexion; //Se incluye la variable global conexion que tiene la conexion a la base de datos
-				$query= "Insert into usuario values ('".$this->Email."', '".$this->contrasena."', '".$this->nombre."', '".$this->apellido."')";
+				$query= "Insert into usuario(email, contrasena, nombre, apellido, telefono) values ('".$this->Email."', '".$this->contrasena."', '".$this->nombre."', '".$this->apellido."', ".$this->telefono.")";
 				if(mysql_query($query, $conexion))
 					return true;
 				else 
 					return false;					
+			}
+			
+			public function estaValidado(){
+				if($this->valida == 1)
+					return true;
+				return false;
 			}
 		
 		//Métodos que se pueden acceder fuera de la clase  sin necesidad de crear una instancia de tipo Usuario
@@ -67,24 +82,9 @@
 				$result= mysql_query("select * from usuario where Email = '$email'",$conexion);
 				$usuario= null;
 				if($row=mysql_fetch_array($result)){
-					$usuario = new Usuario($row['Email'], $row['contrasena'], $row['Nombre'], $row['Apellido']);
+					$usuario = new Usuario($row['Email'], $row['contrasena'], $row['Nombre'], $row['Apellido'], $row['telefono'], $row['valida']);
 				}
-				else
-					die("El usuario que buscas no existe en la base de datos");
 				return $usuario;
-			}
-			
-			//Método que nos dice si un usuario existe en la base de datos dado un correo electrónico
-			public static function existeUsuario($email){
-				global $conexion;
-				$result= mysql_query("select * from usuario where Email = '$email'",$conexion);
-				$existe= false;
-				if($row=mysql_fetch_array($result)){
-					$existe = true;
-				}
-				else
-					$existe= false;
-				return $existe;
 			}
 			
 			//Método que nos permite validar si la contraseña de un usuario es correcta
