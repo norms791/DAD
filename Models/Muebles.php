@@ -160,9 +160,10 @@
 					$muebles= array(); //Crea un arreglo
 					while($row= mysql_fetch_array($result)){ //por cada fila que regresara el query
 						$mueble = new Muebles(); //Crea un objeto Muebles vacio y después llena sus datos
-						$mueble->llenaDatosCompletos($row['idMueble'], $row['desAbreviada'], $row['desDetallada'] ,  $row['ubicacion'], $row['latitud'], $row['reservado'], $row['usuario']);
+						$mueble->llenaDatosCompletos($row['idMueble'], $row['desAbreviada'], $row['desDetallada'], $row['ubicacion'], $row['latitud'], $row['reservado'], $row['usuario']);
 						$muebles[] = $mueble;//Añade el objeto al arreglo
 					}
+					
 					return $muebles;//regresa el arreglo
 				}	
 		
