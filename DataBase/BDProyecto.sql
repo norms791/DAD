@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-11-2012 a las 06:35:22
+-- Tiempo de generación: 16-11-2012 a las 04:46:20
 -- Versión del servidor: 5.5.27
 -- Versión de PHP: 5.4.7
 
@@ -36,19 +36,15 @@ CREATE TABLE IF NOT EXISTS `muebles` (
   `usuario` varchar(50) NOT NULL,
   PRIMARY KEY (`idMueble`),
   KEY `usuario` (`usuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
 
 --
 -- Volcado de datos para la tabla `muebles`
 --
 
 INSERT INTO `muebles` (`idMueble`, `desAbreviada`, `desDetallada`, `ubicacion`, `latitud`, `reservado`, `usuario`) VALUES
-(1, 'ola', 'Sin Informacion', 'Sin Informacion', '0', 0, 'norma791@hotmail.com'),
-(2, 'mesa', 'mesa madera', 'sin informacion', '0', 0, 'gaby_roes@hotmail.com'),
-(5, 'mesa chica', 'mueble nuevo de prueba', 'mi casa', '0', 0, 'norma791@hotmail.com'),
-(6, 'nuevo Mueble', 'mueble nuevo de prueba ola', 'mi casa', '0', 0, 'norma791@hotmail.com'),
-(7, 'piano', 'mueble nuevo de prueba', 'mi casa', '0', 0, 'norma791@hotmail.com'),
-(8, 'silla', 'mueble ola nuevo de prueba', 'mi casa', '0', 0, 'norma791@hotmail.com');
+(1, 'ola', 'Sin Informacion', 'Sin Informacion', '0', 1, 'norma791@hotmail.com'),
+(2, 'mesa', 'mesa madera', 'sin informacion', '0', 0, 'gaby_roes@hotmail.com');
 
 -- --------------------------------------------------------
 
@@ -63,15 +59,14 @@ CREATE TABLE IF NOT EXISTS `reservacion` (
   PRIMARY KEY (`idReservacion`),
   KEY `idMueble` (`idMueble`),
   KEY `idUsuario` (`idUsuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Volcado de datos para la tabla `reservacion`
 --
 
 INSERT INTO `reservacion` (`idReservacion`, `idMueble`, `idUsuario`) VALUES
-(1, 1, 'gaby_roes@hotmail.com'),
-(2, 2, 'norma791@hotmail.com');
+(11, 1, 'dajavax@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -84,6 +79,8 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `contrasena` varchar(12) NOT NULL,
   `Nombre` varchar(50) NOT NULL,
   `Apellido` varchar(50) NOT NULL,
+  `telefono` varchar(12) NOT NULL,
+  `valida` int(1) NOT NULL,
   PRIMARY KEY (`Email`),
   UNIQUE KEY `Email` (`Email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -92,12 +89,13 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`Email`, `contrasena`, `Nombre`, `Apellido`) VALUES
-('cacmartinez@gmail.com', '', 'Carlos', 'Compean'),
-('gaby_roes@hotmail.com', '', 'Gabriela', 'Rodriguez'),
-('mary@florreo.mx', '', 'Rosario', 'Robles'),
-('norma791@hotmail.com', '', 'Norma', 'Escobedo'),
-('rosa.roble@florreo.mx', '', 'Rosario', 'Robles');
+INSERT INTO `usuario` (`Email`, `contrasena`, `Nombre`, `Apellido`, `telefono`, `valida`) VALUES
+('cacmartinez@gmail.com', '', 'Carlos', 'Compean', '0', 0),
+('dajavax@gmail.com', 'davidg', 'David', 'Guzman', '8112088475', 1),
+('gaby_roes@hotmail.com', '', 'Gabriela', 'Rodriguez', '0', 0),
+('jegv91@gmail.com', 'joelito', 'Joel', 'Garcia', '0', 0),
+('norma791@hotmail.com', 'norma', 'Norma', 'Escobedo', '0', 1),
+('rosa.roble@florreo.mx', '', 'Rosario', 'Robles', '0', 0);
 
 --
 -- Restricciones para tablas volcadas
@@ -113,8 +111,8 @@ ALTER TABLE `muebles`
 -- Filtros para la tabla `reservacion`
 --
 ALTER TABLE `reservacion`
-  ADD CONSTRAINT `reservacion_ibfk_2` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`Email`),
-  ADD CONSTRAINT `reservacion_ibfk_1` FOREIGN KEY (`idMueble`) REFERENCES `muebles` (`idMueble`);
+  ADD CONSTRAINT `reservacion_ibfk_1` FOREIGN KEY (`idMueble`) REFERENCES `muebles` (`idMueble`),
+  ADD CONSTRAINT `reservacion_ibfk_2` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`Email`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
