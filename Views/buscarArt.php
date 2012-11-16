@@ -1,32 +1,7 @@
-<html>
-<head>
-<title>Busqueda de Articulos</title>
-</head>
-
-<body>
-<?php
-// Codigo de prueba
-$sql = mysql_connect("localhost", "root", "");
-if(!$sql){
-   die('Could not connect: '.mysql_error());
-}
-mysql_select_db("bdproyecto", $sql);
-
-/* toma el valor de la barra de busqueda de la pagina de inicio */
-//$keyword = $_GET["keyword"];
-$keyword = "ebano";
-
-$query = mysql_query("select * from muebles where desAbreviada like '%".$keyword."%'");
-$resultado = 0;
-
-while($row = mysql_fetch_array($query)){
-   $resultado++;
-}
-?>
-
 <h1>Numero de Resultados:
 <?php
-echo $resultado;
+$num = count($muebles);
+echo $num;
 ?>
 </h1>
 <!--//PENDIENTE - convertir imagenes en hotlinks-->
@@ -40,19 +15,16 @@ echo "<table border='1'>
 <th>Ubicacion</th>
 </tr>";
 
-$quary = mysql_query("select * from muebles where desAbreviada like '%".$keyword."%'");
-//echo "B".$quary."B";
-
-while($rowa = mysql_fetch_array($quary)){
+for($i=0;$i<1;$i++){
    echo "<tr>";
-   echo "<td><img src='" . $rowa['foto'] . "' width='400' /></td>";
-   echo "<td>" . $rowa['desAbreviada'] ."</td>";
-   echo "<td>" . $rowa['ubicacion'] . "</td>";
+   echo "<td><img src='".$muebles[$i]->getIdMueble()."' width='400' /></td>";
+   echo "<td>".$muebles[$i]->getDesAbreviada()."</td>";
+   echo "<td>".$muebles[$i]->getUbicacion()."</td>";
    echo "</tr>";
 }
 
 // en caso de que la busqueda no encuentre resultados
-if($resultado==0){
+/*if($resultado==0){
    $existe = mysql_query("select * from muebles where idMueble = 0");
    $noexiste = mysql_fetch_array($existe);
    echo "<tr>";
@@ -60,11 +32,11 @@ if($resultado==0){
    echo "<td>" . $noexiste['desAbreviada'] ."</td>";
    echo "<td>" . $noexiste['ubicacion'] . "</td>";
    echo "</tr>";
-}
+}*/
 
 echo "</table>";
 
-mysql_close($sql);
+mysql_close($conexion);
 ?>
 </body>
 </html>
