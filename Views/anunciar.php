@@ -14,6 +14,30 @@
 <link href="SpryAssets/SpryValidationTextarea.css" rel="stylesheet" type="text/css" />
 <script src="SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
 <script src="SpryAssets/SpryValidationTextarea.js" type="text/javascript"></script>
+
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false"></script>
+<script>
+	var myCenter=new google.maps.LatLng(25.649573,-100.291125);
+	function initialize(){
+		var mapProp = {
+		center:myCenter,
+		zoom:15,
+		mapTypeId:google.maps.MapTypeId.ROADMAP
+		};
+	var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+	google.maps.event.addListener(map, 'click', function(event) {
+		placeMarker(event.latLng);
+		});
+	function placeMarker(location){
+		var marker = new google.maps.Marker({
+		position: location,
+		map: map,
+		});
+		document.getElementsByName('latlong')[0].value = location;
+	}
+	}
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
 </head>
 
 	<body>
@@ -23,11 +47,11 @@
 				  <h1>Introduce los datos del artículo:</h1>
 				  <label><em>Fotografía</em></label>
 				  <input name="foto" type="file" /> <br/> <br/>
-				  <label><em>Descripción Breve</em></label> 
+				  <label><em>Descripción Breve</em></label> <br/>
 				  <span id="sprytextfield1">
 				  <input type="text" name="descBreve" id="descBreve" />
 				  <span class="textfieldRequiredMsg">Introduce una descripción breve.</span></span>  <br/>
-				  <label><em>Descripción Completa</em></label>
+				  <label><em>Descripción Completa</em></label><br/>
 				  <span id="sprytextarea1">
 				  <textarea name="descCompleta" id="descCompleta" cols="45" rows="5"></textarea>
 				  <span class="textareaRequiredMsg">Introduce una descripción completa.</span></span>  <br/>
@@ -35,8 +59,9 @@
 				  <legend><strong>Ubicación</strong></legend>
 				  <label><em>Dirección</em></label>
 				  <span id="sprytextfield2">
-				  <input type="text" name="ubicacion" id="ubicacion" />
-				  <span class="textfieldRequiredMsg">Introduce ubicación.</span></span>
+				  <input type="text" name="ubicacion" id="ubicacion" /><br/>
+				  <span class="textfieldRequiredMsg">Coloca tu ubicacion en el mapa.</span></span>
+				  <div id="googleMap" style="width:380px;height:350px;"></div>
 				  </fieldset>
 				  <input type="submit" class="boton" name="anunciar" id="anunciar" value="Anunciar" />
 				  <br/>

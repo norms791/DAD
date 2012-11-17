@@ -2,7 +2,7 @@
 
 	global $conexion;
 	
-	if (!($conexion=mysql_connect("localhost","root","")))
+	if (!($conexion=mysql_connect("localhost","root","zulema")))
 	{
 		echo "Error conectando a la base de datos.";
 		exit();
