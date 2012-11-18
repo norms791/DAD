@@ -95,7 +95,7 @@
 				public function insertarMueble(){
 					global $conexion;
 					$query = "insert into muebles (desAbreviada, desDetallada, ubicacion, latitud, reservado, usuario) values ('".$this->desAbreviada."', '".$this->desDetallada.
-									"', '".$this->ubicacion."', ".$this->latitud.",".$this->reservado.", '".$this->usuario."')";
+									"', '".$this->ubicacion."', '".$this->latitud."',".$this->reservado.", '".$this->usuario."')";
 					if(mysql_query($query ,$conexion)){
 						$this->idMueble= mysql_insert_id();
 						return true;}
