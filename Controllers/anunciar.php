@@ -14,5 +14,3 @@
 		include("../Views/error.php");
 	}
 ?>
-
-
