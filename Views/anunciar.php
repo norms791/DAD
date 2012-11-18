@@ -7,7 +7,7 @@
 <title>Anunciar</title>
 <style>
 #head{
-	background: url(../../../Tec%20de%20Monterrey/12vo.%20Semestre/DAD/Pictures/b.jpg);
+	background: url(../Pictures/b.jpg);
 }
 </style>
 <link href="SpryAssets/SpryValidationTextField.css" rel="stylesheet" type="text/css" />
