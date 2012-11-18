@@ -43,7 +43,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 	<body>
 		<?php include_once("../views/header.php");?>
 		<div id="contenido">
-			<form action="..Controllers/validarAnuncio.php" method="post" enctype="multipart/form-data">
+			<form action="../Controllers/anunciar.php" method="post" enctype="multipart/form-data">
 				  <h1>Introduce los datos del artículo:</h1>
 				  <label><em>Fotografía</em></label>
 				  <input name="foto" type="file" /> <br/> <br/>
@@ -62,8 +62,9 @@ google.maps.event.addDomListener(window, 'load', initialize);
 				  <input type="text" name="ubicacion" id="ubicacion" /><br/>
 				  <span class="textfieldRequiredMsg">Coloca tu ubicacion en el mapa.</span></span>
 				  <div id="googleMap" style="width:380px;height:350px;"></div>
+				  <input type="hidden" name="latlong" value="">
 				  </fieldset>
-				  <input type="submit" class="boton" name="anunciar" id="anunciar" value="Anunciar" />
+				  <input type="submit" class="boton" id="anunciar"/>
 				  <br/>
 			</form>
 		</div>	
