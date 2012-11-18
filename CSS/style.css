@@ -36,8 +36,19 @@ padding-top: 20px;
 }
 #datosSesion{
 	position: absolute;
-	top: 67px;
+	top: 44px;
 	right: 177px;
+	background-color: #fdf6e3;
+	border-radius: 15px;
+	padding: 10px;
+	font-family: tahoma;
+	font-weight: bold;
+}
+
+#busqueda{
+	position: absolute;
+	top: 182px;
+	right: 11%;
 }
 
 table{
@@ -49,6 +60,16 @@ table{
 	color: #FF7A00;
 	font-size: 15pt;
 	font-family: tahoma;
+}
+
+.campoSesion{
+	border-radius: 5px;
+	height: 20px;
+	margin-bottom: 4px;
+}
+
+.nuevo{
+	font-size: 8pt;
 }
 
 .boton{
@@ -64,7 +85,7 @@ table{
 }
 
 h1{
-	color: #944C09;
+	color: #624107;
 }
 
 form{
