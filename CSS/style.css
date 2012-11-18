@@ -114,3 +114,14 @@ form{
 	border-radius: 9px;
 	width: 200px;
 }
+
+span.wrong{ 
+	color: #FF0000; 
+	background-color: #FFF; 
+	border: 0.125em red solid; 
+}
+
+#maildiv{
+	font-weight:bold;
+	color: #FF0000;
+}
