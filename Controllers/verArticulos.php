@@ -9,6 +9,7 @@
 	 
 	/* toma el valor de la barra de busqueda de la pagina de inicio */
 	session_start();
+	$vacio=false;
 	include_once("../Models/Muebles.php"); //Se incluye la conexion a la base de datos
 
 	if(isset($_SESSION['mail'])){
@@ -23,6 +24,10 @@
 	
 	// arreglo para articulos encontrados
 	$muebles = Muebles::obtenerListaMuebles();
+	if(count($muebles)==0){
+		// si no se encontraron articulos
+		$vacio = true;
+	}
 	if($muebles){
 		include("../Views/buscarArt.php");
 	}
