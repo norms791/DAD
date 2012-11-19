@@ -31,10 +31,9 @@
 				$doc=glob("../PicturesData/".$muebles[$i]->getIdMueble().".*");
 				$foto[$i]=$doc[$i];
 			}
+		} else {
+			$vacio = true;
 		}
-		$noexiste = Muebles::buscaMuebles("No Existe");
-		$noc=glob("../PicturesData/".$noexiste[0]->getIdMueble().".*");
-		$nofoto=$noc[0];
 	} else {
 		$vacio = true;
 	}
