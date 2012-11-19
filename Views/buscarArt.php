@@ -15,11 +15,11 @@ echo "<table border='1'>
 <th>Ubicacion</th>
 </tr>";
 
-for($i=0;$i<1;$i++){
+foreach($muebles as $mueble){
    echo "<tr>";
-   echo "<td><img src='".$muebles[$i]->getIdMueble()."' width='400' /></td>";
-   echo "<td>".$muebles[$i]->getDesAbreviada()."</td>";
-   echo "<td>".$muebles[$i]->getUbicacion()."</td>";
+   echo "<td><img src='".(isset(glob("../PicturesData/".$mueble->getIdMueble().".*")[0])?glob("../PicturesData/".$mueble->getIdMueble().".*")[0]:'')."' width='400' /></td>";
+   echo "<td>".$mueble->getDesAbreviada()."</td>";
+   echo "<td>".$mueble->getUbicacion()."</td>";
    echo "</tr>";
 }
 
