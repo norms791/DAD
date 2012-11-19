@@ -1,37 +1,45 @@
 <?php
-	if($vacio==false){
+//VERSION NORMA
 ?>
-		<h1>Número de Resultados:
+<h1>Numero de Resultados:
 <?php
-	$num = count($muebles);
-	echo $num;
+$num = count($muebles);
+echo $num;
 ?>
-		</h1>
-		<!--//PENDIENTE - convertir imagenes en hotlinks-->
-		<h3>De click en la imagen de su elección para ir a la página del artículo</h3>
+</h1>
+<!--//PENDIENTE - convertir imagenes en hotlinks-->
+<h3>De click en la imagen de su eleccion para ir a la pagina del articulo</h3>
 
 <?php
-	echo "		<table border='1'>
-				<tr>
-					<th>Foto del Artículo</th>
-					<th>Descripción</th>
-					<th>Ubicación</th>
-				</tr>";
-	
-	for($i=0;$i<1;$i++){
-		echo "			<tr>\n";
-		echo "				<td><img src='".$foto[$i]."' width='400' /></td>\n";
-		echo "				<td>".$muebles[$i]->getDesAbreviada()."</td>\n";
-		echo "				<td>".$muebles[$i]->getUbicacion()."</td>\n";
-		echo "			</tr>\n";
-	}
+echo "<table border='1'>
+<tr>
+<th>Foto del Articulo</th>
+<th>Descripcion</th>
+<th>Ubicacion</th>
+</tr>";
 
-	echo "		</table>\n";
-	
-	} else if($vacio==true){
-		echo "		<h1>No hubo resultados en la busqueda.</h1>";
-	}
-	mysql_close($conexion);
+foreach($muebles as $mueble){
+   echo "<tr>";
+   echo "<td><img src='".(isset(glob("../PicturesData/".$mueble->getIdMueble().".*")[0])?glob("../PicturesData/".$mueble->getIdMueble().".*")[0]:'')."' width='400' /></td>";
+   echo "<td>".$mueble->getDesAbreviada()."</td>";
+   echo "<td>".$mueble->getUbicacion()."</td>";
+   echo "</tr>";
+}
+
+// en caso de que la busqueda no encuentre resultados
+/*if($resultado==0){
+   $existe = mysql_query("select * from muebles where idMueble = 0");
+   $noexiste = mysql_fetch_array($existe);
+   echo "<tr>";
+   echo "<td><img src='" . $noexiste['foto'] . "' /></td>";
+   echo "<td>" . $noexiste['desAbreviada'] ."</td>";
+   echo "<td>" . $noexiste['ubicacion'] . "</td>";
+   echo "</tr>";
+}*/
+
+echo "</table>";
+
+mysql_close($conexion);
 ?>
-	</body>
+</body>
 </html>

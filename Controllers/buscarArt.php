@@ -1,5 +1,5 @@
 <?php
-	/*
+	/* VERSION NORMA
 	 * Controlador que recibe la palabra clave de
 	 * la barra de busqueda de la pagina principal
 	 * y la envia al metodo del Modelo Muebles.php
@@ -7,12 +7,11 @@
 	 * coincidan
 	 */
 	 
-	// toma el valor de la barra de busqueda de la pagina de inicio
+	/* toma el valor de la barra de busqueda de la pagina de inicio */
 	$keyword = $_GET["parametro"];
-	$vacio = false;
-	include_once("../Models/Muebles.php");
 	session_start();
-	
+	include_once("../Models/Muebles.php"); //Se incluye la conexion a la base de datos
+
 	if(isset($_SESSION['mail'])){
 		include_once("../Models/Usuario.php");
 		$usuario= Usuario::obtenerUsuario($_SESSION['mail']);
@@ -24,18 +23,8 @@
 	}
 	
 	// arreglo para articulos encontrados
-	if($keyword!=""){
-		$muebles = Muebles::buscaMuebles($keyword);
-		if($muebles){
-			for($i=0;$i<1;$i++){
-				$doc=glob("../PicturesData/".$muebles[$i]->getIdMueble().".*");
-				$foto[$i]=$doc[$i];
-			}
-		} else {
-			$vacio = true;
-		}
-	} else {
-		$vacio = true;
+	$muebles = Muebles::buscaMuebles($keyword);
+	if($muebles){
+		include("../Views/buscarArt.php");
 	}
-	include("../Views/buscarArt.php");
 ?>
