@@ -24,15 +24,7 @@
 					<th>Ubicación</th>
 				</tr>";
 	
-	// FOR de Diego
-	/*for($i=0;$i<1;$i++){
-		echo "			<tr>\n";
-		echo "				<td><img src='".$foto[$i]."' width='400' /></td>\n";
-		echo "				<td>".$muebles[$i]->getDesAbreviada()."</td>\n";
-		echo "				<td>".$muebles[$i]->getUbicacion()."</td>\n";
-		echo "			</tr>\n";
-	}*/
-	
+		
 	// FOR de Norma
 	// ciclo para desplegar todos los articulos en caso de haber mas de uno
 	foreach($muebles as $mueble){

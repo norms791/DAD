@@ -22,22 +22,10 @@
 		// header para usuarios sin cuenta
 		include("../Views/headerPrincipal.php");
 	}
-	
-	if($keyword!=""){
-		// arreglo para articulos encontrados
-		$muebles = Muebles::buscaMuebles($keyword);
-		if($muebles){
-			for($i=0;$i<1;$i++){
-				// se obtiene la imagen del articulo con el ID
-				$doc=glob("../PicturesData/".$muebles[$i]->getIdMueble().".*");
-				$foto[$i]=$doc[$i];
-			}
-		} else {
-			// si no se encontraron articulos
-			$vacio = true;
-		}
-	} else {
-		// si el usuario no escribio nada en la barra de busqueda
+	// arreglo para articulos encontrados
+	$muebles = Muebles::buscaMuebles($keyword);
+	if(count($muebles)==0){
+		// si no se encontraron articulos
 		$vacio = true;
 	}
 	include("../Views/buscarArt.php");
