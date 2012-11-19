@@ -50,7 +50,7 @@ padding-top: 20px;
 	top: 182px;
 	right: 11%;
 }
-
+/*
 table{
 	margin-left: 62px;
 	height: 50px;
@@ -60,7 +60,7 @@ table{
 	color: #FF7A00;
 	font-size: 15pt;
 	font-family: tahoma;
-}
+}*/
 
 .campoSesion{
 	border-radius: 5px;
@@ -145,4 +145,30 @@ span.wrong{
 #maildiv{
 	font-weight:bold;
 	color: #FF0000;
+}
+
+#infoReservacion{
+	float: left;
+	margin-bottom: 33px;
+	width: 100%;
+	position: relative;
+}
+.datosC{
+	margin-left: 45px;
+	float: left;
+	font-size: 14pt;
+}
+/*Css del titulo de los datos del artículo en la reservacion*/
+.datosA{
+	float:left;
+}
+/*Css del contenido de los datos del artículo en la reservacion*/
+.datosA-cont{
+	margin-left: 48%;
+	margin-right: 4%;
+
+}
+#infoArticulo{
+	margin-top: 164px;
+	position: relative;
 }

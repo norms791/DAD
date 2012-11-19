@@ -13,7 +13,7 @@ if(!$sql){
 mysql_select_db("dad", $sql);
 
 $mail = $_GET["mail"];
-$query = mysql_query("select * from usuario where Email='$mail'");
+$query = mysql_query("select * from usuario where Email='$mail'", $sql);
 
 while($row=mysql_fetch_array($query)){
 	echo "Ya existe un usuario con este email.";

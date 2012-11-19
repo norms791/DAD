@@ -66,12 +66,14 @@
 					return false;					
 			}
 			
+			//Método que revisa si una cuenta está validada por el usuario
 			public function estaValidado(){
 				if($this->valida == 1)
 					return true;
 				return false;
 			}
 			
+			//Método que permite validar una cuenta de correo electrónico
 			public function validaCuenta(){
 				global $conexion;
 				$query= "update usuario set valida = 1 where Email='".$this->Email."'";
@@ -82,6 +84,35 @@
 				else 
 					return false;	
 			}
+			
+			//Métodos que permiten hacer updates a la base de datos de nombre, apellido y telefono
+				public function updateNombre($nombre){
+					global $conexion; //Se incluye la variable global conexion que tiene la conexion a la base de datos
+					$query= "update usuario set Nombre='".$nombre."' where Email='".$this->Email."'";
+					if(mysql_query($query, $conexion))
+						return true;
+					else 
+						return false;					
+				}
+				
+				public function updateApellido($apellido){
+					global $conexion; //Se incluye la variable global conexion que tiene la conexion a la base de datos
+					$query= "update usuario set Apellido='".$apellido."' where Email='".$this->Email."'";
+					if(mysql_query($query, $conexion))
+						return true;
+					else 
+						return false;					
+				}
+				
+				public function updateTelefono($telefono){
+					global $conexion; //Se incluye la variable global conexion que tiene la conexion a la base de datos
+					$query= "update usuario set telefono=".$telefono." where Email='".$this->Email."'";
+					if(mysql_query($query, $conexion))
+						return true;
+					else 
+						return false;					
+				}
+
 			
 		//Métodos que se pueden acceder fuera de la clase  sin necesidad de crear una instancia de tipo Usuario
 		/* En el controlador se acceden de la siguiente manera:

@@ -11,6 +11,7 @@
 		$doc=glob("../PicturesData/".$mueble->getIdMueble().".*");
 		if(isset($doc[0]))
 				$foto=$doc[0];
+		else $foto= "../Pictures/img_noDisponible.jpg";
 		include("../Views/reservar.php");
 	}
 	else{
