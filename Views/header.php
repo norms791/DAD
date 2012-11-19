@@ -14,6 +14,7 @@
 			
 			echo $dato;
 		?></center>
+		<A HREF ="../Controllers/logout.php">Salir</A>
 	</div>
 	<div id="busqueda">
 		<form action="../Controllers/buscarArt.php" method="get">
