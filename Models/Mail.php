@@ -30,7 +30,7 @@
 		$headers = "MIME-Version: 1.0" . "\r\n";
 		$headers .= "Content-type: text/html; charset=utf-8" . "\r\n";
 		$headers .= "To: " . $to . "\r\n";
-		$headers .= "From: Reciclando Muebles, A.C. \r\n";
+		$headers .= "From: ".$from."\r\n";
 		// Mensaje del mail (cada linea debe tener 70 caracteres)
 		$message = "
 		<html>
@@ -46,7 +46,7 @@
 		este correo. De lo contrario, entre en la siguiente p&aacute;gina.
 		</p>
 		<p>	
-		<a href=\"http:/localhost/DAD/controllers/ConfirmaCuenta.php?email=".$to."\">
+		<a href='http://localhost/DAD/controllers/ConfirmaCuenta.php?email=".$to."'>
 		Confirmar correo
 		</a>
 		<br/>

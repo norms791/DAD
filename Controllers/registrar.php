@@ -12,6 +12,7 @@
 	
 	include_once("../Models/Usuario.php");
 	include("../Views/headerPrincipal.php");
+	include_once("../Models/Mail.php");
 	
 	// datos recibidos de la pagina de registro.php
 	$nombre = $_POST["nombreReg"];
@@ -22,7 +23,11 @@
 	
 	// se crea el objeto Usuario y se introducen los datos en la base de datos
 	$registro = new Usuario($email, $pwd, $nombre, $apellido, $telefono, 0);
-	$registro -> insertarUsuario();
-	
-	include("../Views/registrar.php");
+	if($registro -> insertarUsuario()){	
+		include("../Views/registrar.php");
+		//Se crea un objeto Mail con destinatario el usuario que se acaba de registrar
+		$mail= new Mail($registro);
+		//Se envia un mail al usuario que se registró para que valide su cuenta
+		$mail -> enviarMailRegistro();
+	}
 ?>

@@ -32,7 +32,14 @@
 						<br/>
 						Esta cuenta no ha sido validada. Para hacerlo, por favor accede a tu cuenta de correo electrónico.
 				<?php }
-						?>	
+				else if($err==4){ ?>
+						<br/>
+						<h2>No se ha podido validar la cuenta.</h2>
+						<br/>
+						<br/>
+						No se ha podido validar la cuenta. Por favor vuelve a intentar.
+				<?php }
+						?>		
 				<br/><br/>
 				<input type="submit" value="Inicio" class="boton"/>
 			</center>

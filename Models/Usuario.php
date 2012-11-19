@@ -71,7 +71,18 @@
 					return true;
 				return false;
 			}
-		
+			
+			public function validaCuenta(){
+				global $conexion;
+				$query= "update usuario set valida = 1 where Email='".$this->Email."'";
+				if(mysql_query($query,$conexion)){
+					$this->valida=1;
+					return true;
+				}
+				else 
+					return false;	
+			}
+			
 		//Métodos que se pueden acceder fuera de la clase  sin necesidad de crear una instancia de tipo Usuario
 		/* En el controlador se acceden de la siguiente manera:
 			1.se escribe el nombre de la clase seguido de :: y el método  por ejemplo Usuario::obtenerUsuario('correo@correo.com');  */
