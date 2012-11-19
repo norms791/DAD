@@ -12,7 +12,7 @@
 				$filename=explode(".", $_FILES['foto']['name']);
 				move_uploaded_file($_FILES['foto']['tmp_name'], "../PicturesData/".$mueble->getIdMueble().".".$filename[count($filename)-1]);
 			}
-			echo "yeii";
+			include("../Views/confirmarAnuncio.php");
 		} else {
 			include("../Views/anunciar.php");
 		}
