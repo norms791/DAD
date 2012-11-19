@@ -24,6 +24,11 @@
 	
 	// arreglo para articulos encontrados
 	$muebles = Muebles::obtenerListaMuebles();
+	foreach($muebles as $mueble){
+		$imagen=glob("../PicturesData/".$mueble->getIdMueble().".*");
+		if(isset($imagen[0]))
+			$imagenes[$mueble->getIdMueble()]=$imagen[0];
+	}
 	if(count($muebles)==0){
 		// si no se encontraron articulos
 		$vacio = true;
