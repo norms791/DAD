@@ -3,6 +3,7 @@
 	<head>
 		<title>Reciclado Muebles</title>
 		<link rel="stylesheet" href="../CSS/style.css" type="text/css" media="screen" />	
+		<?php include_once("../views/sliderImports.html");?>
 		<style>
 			#head{
 				background: url(../Pictures/b.jpg);
@@ -13,7 +14,7 @@
 		<?php include("../views/headerPrincipal.php");?>
 		<div id="contenido">
 			<form>
-				<p>hola</p>
+				<?php include_once("../Views/slider.html");?>
 			</form>
 		</div>    	
 	</body>
