@@ -1,5 +1,5 @@
 <?php
-	/* VERSION NORMA
+	/*
 	 * Controlador que recibe la palabra clave de
 	 * la barra de busqueda de la pagina principal
 	 * y la envia al metodo del Modelo Muebles.php
@@ -7,11 +7,12 @@
 	 * coincidan
 	 */
 	 
-	/* toma el valor de la barra de busqueda de la pagina de inicio */
+	// toma el valor de la barra de busqueda de la pagina de inicio
 	$keyword = $_GET["parametro"];
+	$vacio = false;
+	include_once("../Models/Muebles.php");
 	session_start();
-	include_once("../Models/Muebles.php"); //Se incluye la conexion a la base de datos
-
+	
 	if(isset($_SESSION['mail'])){
 		include_once("../Models/Usuario.php");
 		$usuario= Usuario::obtenerUsuario($_SESSION['mail']);
@@ -22,9 +23,22 @@
 		include("../Views/headerPrincipal.php");
 	}
 	
-	// arreglo para articulos encontrados
-	$muebles = Muebles::buscaMuebles($keyword);
-	if($muebles){
-		include("../Views/buscarArt.php");
+	if($keyword!=""){
+		// arreglo para articulos encontrados
+		$muebles = Muebles::buscaMuebles($keyword);
+		if($muebles){
+			for($i=0;$i<1;$i++){
+				// se obtiene la imagen del articulo con el ID
+				$doc=glob("../PicturesData/".$muebles[$i]->getIdMueble().".*");
+				$foto[$i]=$doc[$i];
+			}
+		} else {
+			// si no se encontraron articulos
+			$vacio = true;
+		}
+	} else {
+		// si el usuario no escribio nada en la barra de busqueda
+		$vacio = true;
 	}
+	include("../Views/buscarArt.php");
 ?>
