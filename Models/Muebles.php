@@ -140,7 +140,7 @@
 					//El método regresa un arreglo de objetos de la clase Muebles	
 				public static function obtenerListaMuebles(){
 					global $conexion; //Incluye la variable global conexion, que contiene la conexion a la base de datos
-					$result = mysql_query("SELECT * FROM muebles",$conexion); //Ejecuta el query
+					$result = mysql_query("SELECT * FROM muebles where reservado=0",$conexion); //Ejecuta el query
 					$muebles= array(); //Crea un arreglo
 					while($row= mysql_fetch_array($result)){ //por cada fila que regresara el query
 						$mueble = new Muebles(); //Crea un objeto Muebles vacio y después llena sus datos
@@ -155,7 +155,7 @@
 				   El método regresa un arreglo de objetos Muebles con todos los elementos de la base de datos que contuvieran esa palabra en su descripción*/
 				public static function buscaMuebles($palabra){
 					global $conexion;
-					$query = "SELECT * FROM muebles where desDetallada like '%$palabra%' OR desAbreviada like '%$palabra%'";
+					$query = "SELECT * FROM muebles where reservado=0 AND(desDetallada like '%$palabra%' OR desAbreviada like '%$palabra%')";
 					$result = mysql_query($query,$conexion);
 					$muebles= array(); //Crea un arreglo
 					while($row= mysql_fetch_array($result)){ //por cada fila que regresara el query
