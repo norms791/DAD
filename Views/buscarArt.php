@@ -36,8 +36,9 @@
 	// FOR de Norma
 	// ciclo para desplegar todos los articulos en caso de haber mas de uno
 	foreach($muebles as $mueble){
+		$idMueble = $mueble->getIdMueble();
 		echo "			<tr>\n";
-		echo "				<td><a href='../Views/'><img src='".(isset(glob("../PicturesData/".$mueble->getIdMueble().".*")[0])?glob("../PicturesData/".$mueble->getIdMueble().".*")[0]:'')."' width='400' /></a></td>\n";
+		echo "				<td><a href='../Controllers/muestraInformacion.php?mueble=".$idMueble."'><img src='".(isset(glob("../PicturesData/".$mueble->getIdMueble().".*")[0])?glob("../PicturesData/".$mueble->getIdMueble().".*")[0]:'')."' width='400' /></a></td>\n";
 		echo "				<td>".$mueble->getDesAbreviada()."</td>\n";
 		echo "				<td>".$mueble->getUbicacion()."</td>\n";
 		echo "			</tr>\n";
