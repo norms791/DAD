@@ -14,7 +14,9 @@
 		<?php include("../views/headerPrincipal.php");?>
 		<div id="contenido">
 			<form>
-				<?php include_once("../Views/slider.html");?>
+				<center>
+					<?php include_once("../Views/slider.html");?>
+				</center>
 			</form>
 		</div>    	
 	</body>
