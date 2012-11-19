@@ -64,7 +64,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 				  <div id="googleMap" style="width:380px;height:350px;"></div>
 				  <input type="hidden" name="latlong" value="">
 				  </fieldset>
-				  <input type="submit" class="boton" id="anunciar"/>
+				  <input type="submit" value="Anunciar" class="boton" id="anunciar"/>
 				  <br/>
 			</form>
 		</div>	
