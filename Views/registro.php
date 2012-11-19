@@ -31,5 +31,6 @@
 			<span id="cpwdsp"></span><br /><br />
 			<input type="submit" value="Registrar Usuario" />
 		</form>
+	</div>
 	</body>
 </html>

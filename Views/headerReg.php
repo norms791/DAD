@@ -15,3 +15,4 @@
 
 	<body>
 		<a href="../Controllers/index.php"><img id="logo" src="../Pictures/logo.png" alt="Reciclando Muebles A.C."/></a>
+		<div id="contenido">
