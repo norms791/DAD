@@ -8,6 +8,7 @@
 				background: url(../Pictures/b.jpg);
 			}
 		</style>
+		<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false"></script>
 	</head>
 	<body>
 		<?php include_once("../views/header.php");?>
@@ -15,35 +16,40 @@
 		   <form action="../Controllers/reservar.php" method="get">
 			<input type="hidden" name='mueble' value='<?=$mueble->getIdMueble()?>'/>
 				<h1>Informacion</h1>
-				<table border="1" style="width:80%";>
-					<tr>
-						<td colspan="3">Informacion del articulo</td>
-					</tr>
-					<tr>
-						<td>Descripcion breve</td>
-						<td><?=$mueble->getDesAbreviada()?></td>
-						<th rowspan="4" style="width:40%";><div id="googleMap" style="width:350px;height:270px;"></div></th>
-					</tr>
-					<tr>
-						<td style="width:25%";>Descripcion detallada</td>
-						<td style="width:35%";><?=$mueble->getDesDetallada()?></td>
-					</tr>
-					<tr>
-						<td>Ubicacion</td>
-						<td><?=$mueble->getUbicacion()?></td>
-					</tr>
-					<tr>
-						<td>Imagen</td>
-						<td><img src='<?=$foto?>' /></td>
-					</tr>
-				</table>
-				<div id="latlongdiv" style="display: none;"><?=$mueble->getLatitud()?></div>
+				<div id="infoArticulo" >
+				<div style="float: left; height: 312px; width: 312px; display: table-cell; vertical-align: middle; text-align: center;">
+					<img src='<?=$foto?>' style="max-width: 50%; max-height: 50%;"/>
+				</div>
+				<div style="margin-bottom: 13px;"><div class="datosA"><b>Descripción abreviada: </b></div><div class="datosA-cont"><?=$mueble->getDesAbreviada()?></div></div>
+				<div style="margin-bottom: 13px;"><div class="datosA"><b>Descripción detallada&nbsp;: </b></div><div class="datosA-cont"><?=$mueble->getDesDetallada()?></div></div>
+				<div style="margin-bottom: 13px;"><div class="datosA"><b>Ubicación del artículo&nbsp;: </b></div><div class="datosA-cont"><?=$mueble->getUbicacion()?></div></div>
+				<div id="latitudinfo" style="display:none"><?=$mueble->getLatitud()?></div>
+				<div id="googleMap" style="width:350px;height:270px;"></div>
+				</div>
 				<center>
 					<input type="submit" value="Reservar" class="boton"/>
 				</center>
 		   </form>
 		</div>
 	</body>
-	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false"></script>
-	<script type="text/javascript" src="../JavaScripts/mapa.js"></script>
+	<script>
+			var mytext = document.getElementById("latitudinfo").innerHTML;
+			var result = mytext.split(",");
+			var myCenter=new google.maps.LatLng(result[0],result[1]);
+			var marker;
+			function initialize(){
+				var mapProp = {
+				center:myCenter,
+				zoom:15,
+				mapTypeId:google.maps.MapTypeId.ROADMAP
+				};
+			var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+			marker=new google.maps.Marker({
+			position:myCenter,
+			animation:google.maps.Animation.BOUNCE
+			});
+			marker.setMap(map);
+			}
+		google.maps.event.addDomListener(window, 'load', initialize);
+		</script>
 </html>
