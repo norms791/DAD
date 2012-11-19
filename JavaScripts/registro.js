@@ -34,7 +34,7 @@ function verificaMail(mail){
 			document.getElementById("maildiv").innerHTML = aviso;
 		}
 	}
-	xhr.open("GET", "/ProyectoDAI/Ajax/mailAJAX.php?mail=" + mail, true);
+	xhr.open("GET", "../Ajax/mailAJAX.php?mail=" + mail, true);
 	xhr.send();
 }
 
