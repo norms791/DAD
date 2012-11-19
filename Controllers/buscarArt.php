@@ -7,11 +7,12 @@
 	 * coincidan
 	 */
 	 
-	/* toma el valor de la barra de busqueda de la pagina de inicio */
+	// toma el valor de la barra de busqueda de la pagina de inicio
 	$keyword = $_GET["parametro"];
+	$vacio = false;
+	include_once("../Models/Muebles.php");
 	session_start();
-	include_once("../Models/Muebles.php"); //Se incluye la conexion a la base de datos
-
+	
 	if(isset($_SESSION['mail'])){
 		include_once("../Models/Usuario.php");
 		$usuario= Usuario::obtenerUsuario($_SESSION['mail']);
@@ -23,8 +24,19 @@
 	}
 	
 	// arreglo para articulos encontrados
-	$muebles = Muebles::buscaMuebles($keyword);
-	if($muebles){
-		include("../Views/buscarArt.php");
+	if($keyword!=""){
+		$muebles = Muebles::buscaMuebles($keyword);
+		if($muebles){
+			for($i=0;$i<1;$i++){
+				$doc=glob("../PicturesData/".$muebles[$i]->getIdMueble().".*");
+				$foto[$i]=$doc[$i];
+			}
+		}
+		$noexiste = Muebles::buscaMuebles("No Existe");
+		$noc=glob("../PicturesData/".$noexiste[0]->getIdMueble().".*");
+		$nofoto=$noc[0];
+	} else {
+		$vacio = true;
 	}
+	include("../Views/buscarArt.php");
 ?>
