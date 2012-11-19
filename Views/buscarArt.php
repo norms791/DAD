@@ -47,9 +47,10 @@
 	
 	} else if($vacio==true){
 		// en caso de no haber encontrado ningun articulo
-		echo "		<h1>No hubo resultados en la busqueda.</h1>";
+		echo "		<h1>No hubo resultados en la búsqueda.</h1>";
 	}
 	mysql_close($conexion);
 ?>
+	</div>
 	</body>
 </html>

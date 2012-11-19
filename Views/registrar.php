@@ -13,6 +13,7 @@
 		</html>";
 	} else {*/
 	echo "		<h1>Registro Exitoso!</h1>
+		</div>
 		</body>
 	</html>";
 	//}
