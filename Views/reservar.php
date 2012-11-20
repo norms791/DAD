@@ -34,6 +34,7 @@
 				<div style="margin-bottom: 13px;"><div class="datosA"><b>Descripción abreviada: </b></div><div class="datosA-cont"><?=$mueble->getDesAbreviada()?></div></div>
 				<div style="margin-bottom: 13px;"><div class="datosA"><b>Descripción detallada&nbsp;: </b></div><div class="datosA-cont"><?=$mueble->getDesDetallada()?></div></div>
 				<div style="margin-bottom: 13px;"><div class="datosA"><b>Ubicación del artículo&nbsp;: </b></div><div class="datosA-cont"><?=$mueble->getUbicacion()?></div></div>
+				<div id="latlongdiv" style="display:none"><?= preg_replace('/\(|\)/','',$mueble->getLatitud()) ?></div>
 				<div id="googleMap" style="width:350px;height:270px;"></div>
 			</div>
 			<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false"></script>
