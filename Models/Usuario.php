@@ -9,6 +9,7 @@
 		private $apellido;
 		private $telefono;
 		private $valida;
+		private $idMueble;
 		
 		//Método Constructor
 		function __construct($Email, $contrasena, $Nombre, $Apellido, $telefono, $valida){
@@ -122,6 +123,17 @@
 			public static function obtenerUsuario($email){
 				global $conexion;
 				$result= mysql_query("select * from usuario where Email = '$email'",$conexion);
+				$usuario= null;
+				if($row=mysql_fetch_array($result)){
+					$usuario = new Usuario($row['Email'], $row['contrasena'], $row['Nombre'], $row['Apellido'], $row['telefono'], $row['valida']);
+				}
+				return $usuario;
+			}
+			
+			//Metodo que nos regresa el dueño de un articulo publicado
+			public static function obtenerDueño($idMueble){
+				global $conexion;
+				$result= mysql_query("select * from usuario as u, muebles as m where m.idMueble = '$idMueble' and m.usuario = u.Email",$conexion);
 				$usuario= null;
 				if($row=mysql_fetch_array($result)){
 					$usuario = new Usuario($row['Email'], $row['contrasena'], $row['Nombre'], $row['Apellido'], $row['telefono'], $row['valida']);

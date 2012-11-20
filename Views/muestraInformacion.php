@@ -15,17 +15,25 @@
 		<div id="contenido" style="width:100%";>
 		   <form action="../Controllers/reservar.php" method="get">
 			<input type="hidden" name='mueble' value='<?=$mueble->getIdMueble()?>'/>
-				<h1>Informacion</h1>
-				<div id="infoArticulo" >
+				<h1>Informacion</h1>			
+			<div id="infoReservacion">
+				<h2>Datos del vendedor:</h2>
+				<div class="datosC"><b>E-mail: </b><div style="margin-left: 3px;"><?=$usuario->getEmail()?></div></div>
+				<div class="datosC"><b>Nombre: </b><div id="nombre" style="float:left;margin-left: 3px;" ><?=$dueño->getNombre()?></div></div>
+				<div class="datosC"><b>Apellido: </b><div id="apellido" style="float:left;margin-left: 3px;" ><?=$dueño->getApellido()?></div></div>					
+				<div class="datosC"><b>Teléfono: </b><div id="telefono" style="float:left;margin-left: 3px;" ><?=$dueño->getTelefono()?></div></div>	
+			</div>
+			<div id="infoArticulo" >
+				<h2>Artículo reservado:</h2>
 				<div style="float: left; height: 312px; width: 312px; display: table-cell; vertical-align: middle; text-align: center;">
-					<img src='<?=$foto?>' style="max-width: 50%; max-height: 50%;"/>
+					<img src='<?=$foto?>' style="max-width: 100%; max-height: 100%;"/>
 				</div>
 				<div style="margin-bottom: 13px;"><div class="datosA"><b>Descripción abreviada: </b></div><div class="datosA-cont"><?=$mueble->getDesAbreviada()?></div></div>
 				<div style="margin-bottom: 13px;"><div class="datosA"><b>Descripción detallada&nbsp;: </b></div><div class="datosA-cont"><?=$mueble->getDesDetallada()?></div></div>
 				<div style="margin-bottom: 13px;"><div class="datosA"><b>Ubicación del artículo&nbsp;: </b></div><div class="datosA-cont"><?=$mueble->getUbicacion()?></div></div>
-				<div id="latitudinfo" style="display:none"><?= preg_replace('/\(|\)/','',$mueble->getLatitud()) ?></div>
+				<div id="latitudinfo" style="display:none"><?=$mueble->getLatitud()?></div>
 				<div id="googleMap" style="width:350px;height:270px;"></div>
-				</div>
+			</div>
 				<center>
 					<input type="submit" value="Reservar" class="boton"/>
 				</center>
