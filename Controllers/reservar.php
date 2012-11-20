@@ -1,10 +1,14 @@
 <?php
+/* Controlador para realizar la función de reservar
+* 
+*
+*/
+	// Se verifica que exista una sesión activa
 	session_start();
 	if(isset($_SESSION['mail'])){
 		include_once("../Models/Usuario.php");
 		include_once("../Models/Reservacion.php");
 		include_once("../Models/Muebles.php");
-		
 		$mueble = Muebles::obtenerMueble($_GET['mueble']);
 		$usuario= Usuario::obtenerUsuario($_SESSION['mail']);
 		

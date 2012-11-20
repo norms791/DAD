@@ -1,5 +1,7 @@
 <?php
-
+/*
+* Conexión a la base de datos
+*/
 	global $conexion;
 	
 	if (!($conexion=mysql_connect("localhost","root","")))

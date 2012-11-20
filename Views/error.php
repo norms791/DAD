@@ -6,6 +6,7 @@
 		<link rel="stylesheet" href="../CSS/style.css" type="text/css" media="screen" />		
 	</head>
 	<body>	
+<!-- Forma para verificar los errores-->
 		<div id="contenido" style="margin-top:10%; margin-bottom: auto; height: 380px;">			
 		   <form action="../Controllers/index.php" method="get" >
 		   <center>

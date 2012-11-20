@@ -1,5 +1,9 @@
 <?php
+	/* 
+	* Controlador en donde se muestra la información 
+	*/ 
 	session_start();
+	// verificación de sesión
 	if(isset($_SESSION['mail'])){
 		include_once("../Models/Usuario.php");
 		include_once("../Models/Muebles.php");

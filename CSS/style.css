@@ -50,7 +50,7 @@ padding-top: 20px;
 	top: 182px;
 	right: 11%;
 }
-/*
+
 table{
 	margin-left: 62px;
 	height: 50px;
@@ -58,9 +58,14 @@ table{
 	width: 307px;
 	text-align: center;
 	color: #FF7A00;
-	font-size: 15pt;
+	font-size: 12pt;
 	font-family: tahoma;
-}*/
+}
+
+table img {
+	width: 200px;
+	height: 200px;
+}
 
 .campoSesion{
 	border-radius: 5px;

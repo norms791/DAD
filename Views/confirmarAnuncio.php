@@ -5,6 +5,7 @@
 		<link rel="stylesheet" href="../CSS/style.css" type="text/css" media="screen" />		
 	</head>
 	<body>
+<!-- Forma para verificar que la publicación del mueble fue exitoso-->
 		<?php include_once("../views/header.php");?>
 		<div id="contenido">
 		   <form action="../Controllers/index.php" method="get">

@@ -9,7 +9,7 @@
 	 */
 ?>
 
-		<h3>Por favor, ingrese los datos que se le piden a continuacion.</h3>
+		<h3> &nbsp;Por favor, ingrese los datos que se le piden a continuacion. </h3>
 		<form name="Registro" action="../Controllers/registrar.php" method="post">
 			Nombre: &nbsp;
 			<input type="text" id="nombreReg" name="nombreReg" size="50" autofocus="autofocus" />
@@ -29,7 +29,7 @@
 			Confirme Contraseña: 
 			<input type="password" id="cpwdReg" size="15" maxlength="12" />
 			<span id="cpwdsp"></span><br /><br />
-			<input type="submit" value="Registrar Usuario" />
+			<input type="submit" value="Registrar Usuario" class="boton" />
 		</form>
 	</div>
 	</body>

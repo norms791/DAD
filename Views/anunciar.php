@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+<!--Vista en donde se despliegan los datos para anunciar un nuevo mueble -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="../CSS/style.css" type="text/css" media="screen"/>
@@ -14,9 +15,10 @@
 <link href="SpryAssets/SpryValidationTextarea.css" rel="stylesheet" type="text/css" />
 <script src="SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
 <script src="SpryAssets/SpryValidationTextarea.js" type="text/javascript"></script>
-
+<!-- Implementación del mapa de GoogleMaps-->
 <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false"></script>
 <script>
+<!--Coordenadas del Tecnologico de Monterrey para que aparezca como primera vista del mapa-->
 	var myCenter=new google.maps.LatLng(25.649573,-100.291125);
 	function initialize(){
 		var mapProp = {
@@ -41,6 +43,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 </head>
 
 	<body>
+    <!-- Campos donde se insertaran los datos de los muebles -->
 		<?php include_once("../views/header.php");?>
 		<div id="contenido">
 			<form action="../Controllers/anunciar.php" method="post" enctype="multipart/form-data">
